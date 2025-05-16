@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 import './Reservation.css';
 
 const Reservation = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     kilometres: '',
     heure: '',
@@ -89,9 +91,9 @@ const Reservation = () => {
       initial="hidden"
       animate="visible"
     >
-      <motion.h2 variants={itemVariants}>Simulation de Prix</motion.h2>
+      <motion.h2 variants={itemVariants}>{t('simulation.title')}</motion.h2>
       <motion.p className="subtitle" variants={itemVariants}>
-        Calculez instantanément le prix de votre trajet
+        {t('simulation.subtitle')}
       </motion.p>
 
       <motion.form 
@@ -100,7 +102,7 @@ const Reservation = () => {
         className="reservation-form"
       >
         <motion.div variants={itemVariants} className="form-group">
-          <label htmlFor="kilometres">Distance en kilomètres</label>
+          <label htmlFor="kilometres">{t('simulation.form.kilometres')}</label>
           <input
             type="number"
             id="kilometres"
@@ -115,7 +117,7 @@ const Reservation = () => {
         </motion.div>
 
         <motion.div variants={itemVariants} className="form-group">
-          <label htmlFor="heure">Heure du trajet</label>
+          <label htmlFor="heure">{t('simulation.form.heure')}</label>
           <input
             type="time"
             id="heure"
@@ -127,9 +129,9 @@ const Reservation = () => {
         </motion.div>
 
         <motion.div variants={itemVariants} className="form-group">
-          <label>Période</label>
+          <label>{t('simulation.form.periode')}</label>
           <div className="periode-display">
-            {formData.periode === 'jour' ? 'Jour (7h - 19h)' : 'Nuit (19h - 7h) +30%'}
+            {formData.periode === 'jour' ? t('simulation.form.jour') : t('simulation.form.nuit')}
           </div>
         </motion.div>
 
@@ -140,7 +142,7 @@ const Reservation = () => {
           whileTap={{ scale: 0.95 }}
           disabled={isCalculating || !formData.heure}
         >
-          {isCalculating ? 'Calcul en cours...' : 'Calculer le prix'}
+          {isCalculating ? 'Calcul en cours...' : t('simulation.form.submit')}
         </motion.button>
       </motion.form>
 
@@ -153,10 +155,10 @@ const Reservation = () => {
             animate="visible"
             exit="hidden"
           >
-            <h3>Prix estimé</h3>
+            <h3>{t('simulation.result.title')}</h3>
             <div className="price-value">{price}€</div>
             <p className="price-note">
-              * Prix calculé au tarif de 2.50€ par kilomètre
+              * {t('simulation.result.note')}
               {formData.periode === 'nuit' && ' avec majoration de 30%'}
             </p>
           </motion.div>

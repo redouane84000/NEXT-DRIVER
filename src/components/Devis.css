@@ -121,30 +121,26 @@ select {
   padding-right: 2.5rem;
 }
 
-.submit-button {
-  background-color: #ffffff;
-  color: #333333;
-  padding: 0.12rem 0.8rem;
+.devis-form .submit-btn {
+  background-color: #808080 !important;
+  color: white !important;
+  padding: 12px 24px;
   border: none;
-  border-radius: 3px;
-  font-size: 0.45rem;
-  font-weight: 500;
+  border-radius: 4px;
   cursor: pointer;
-  width: 80%;
-  margin: 0.16rem auto 0;
-  transition: all 0.3s ease;
-  height: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 20px;
 }
 
-.submit-button:hover {
-  background-color: var(--primary-color);
-  color: #ffffff;
-  transform: scale(1.02);
+.devis-form .submit-btn:hover {
+  background-color: #666666 !important;
+}
+
+.devis-form .submit-btn:active {
+  background-color: #4d4d4d !important;
 }
 
 /* Responsive Design */

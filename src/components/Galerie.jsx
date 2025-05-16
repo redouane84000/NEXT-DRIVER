@@ -1,30 +1,32 @@
 import { useState, useEffect } from 'react'
+import { useLanguage } from '../context/LanguageContext'
 import './Galerie.css'
 
-const Galerie = () => {
+function Galerie() {
+  const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
 
   const slides = [
     {
       image: '/images/palais.png',
-      title: 'Découvrez Avignon',
-      description: 'Explorez la richesse historique d\'Avignon avec nos services de transport. Du majestueux Palais des Papes au célèbre Pont d\'Avignon, nous vous accompagnons dans votre découverte de la Cité des Papes. Profitez d\'un transport confortable et personnalisé pour visiter les joyaux du patrimoine avignonnais.'
+      title: t('galerie.slides.avignon.title'),
+      description: t('galerie.slides.avignon.description')
     },
     {
       image: '/images/auto.png',
-      title: 'Avignon Motor Passion',
-      description: 'Ne manquez pas les grands événements automobiles d\'Avignon ! Notre service de transport vous garantit une arrivée élégante et ponctuelle à l\'Avignon Motor Passion et autres expositions. Une expérience de transport premium pour les passionnés d\'automobiles.'
+      title: t('galerie.slides.motor.title'),
+      description: t('galerie.slides.motor.description')
     },
     {
       image: '/images/vtc3.png',
-      title: 'Transport Sécurisé',
-      description: 'Votre sécurité est notre priorité. Nos chauffeurs professionnels vous assurent un transport sécurisé et confortable. Disponibles 24h/24, nous vous accompagnons dans tous vos déplacements avec professionnalisme et discrétion.'
+      title: t('galerie.slides.transport.title'),
+      description: t('galerie.slides.transport.description')
     },
     {
       image: '/images/mariage.png',
-      title: 'Événements Spéciaux',
-      description: 'Rendez vos moments inoubliables avec notre service de transport événementiel. Mariages, anniversaires, cérémonies... Nous vous offrons un service sur mesure pour vos occasions spéciales. Élégance et ponctualité garanties.'
+      title: t('galerie.slides.evenements.title'),
+      description: t('galerie.slides.evenements.description')
     },
     {
       image: '/images/lavandes.png',

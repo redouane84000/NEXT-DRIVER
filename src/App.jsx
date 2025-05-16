@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import './App.css'
 import Footer from './components/Footer'
+import LanguageSelector from './components/LanguageSelector'
+import { LanguageProvider, useLanguage } from './context/LanguageContext'
 
 // Composants
 import Devis from './components/Devis'
@@ -34,11 +36,12 @@ const pageVariants = {
   }
 }
 
-function App() {
-  const [currentPage, setCurrentPage] = useState('simulation-prix')
+function AppContent() {
+  const [currentPage, setCurrentPage] = useState('devis')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isHeaderVisible, setIsHeaderVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const { t } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -85,13 +88,14 @@ function App() {
       case 'devenir-chauffeur':
         return <DevenirChauffeur />
       default:
-        return <SimulationPrix />
+        return <Devis />
     }
   }
 
   return (
     <div className="app">
       <div className={`brand-text ${!isHeaderVisible ? 'hide' : ''}`}>NEXT-DRIVER</div>
+      <LanguageSelector />
       <header className={`header ${!isHeaderVisible ? 'hide' : ''}`}>
         <div className="header-content">
           <button 
@@ -110,7 +114,7 @@ function App() {
                   className={currentPage === 'devis' ? 'active' : ''} 
                   onClick={() => handlePageChange('devis')}
                 >
-                  DEVIS
+                  {t('nav.devis')}
                 </button>
               </li>
               <li>
@@ -118,7 +122,7 @@ function App() {
                   className={currentPage === 'simulation-prix' ? 'active' : ''} 
                   onClick={() => handlePageChange('simulation-prix')}
                 >
-                  SIMULATION PRIX
+                  {t('nav.simulation')}
                 </button>
               </li>
               <li>
@@ -126,7 +130,7 @@ function App() {
                   className={currentPage === 'galerie' ? 'active' : ''} 
                   onClick={() => handlePageChange('galerie')}
                 >
-                  GALERIE
+                  {t('nav.galerie')}
                 </button>
               </li>
               <li>
@@ -134,7 +138,7 @@ function App() {
                   className={currentPage === 'ou-sommes-nous' ? 'active' : ''} 
                   onClick={() => handlePageChange('ou-sommes-nous')}
                 >
-                  OÙ SOMMES-NOUS
+                  {t('nav.location')}
                 </button>
               </li>
               <li>
@@ -142,7 +146,7 @@ function App() {
                   className={currentPage === 'devenir-chauffeur' ? 'active' : ''} 
                   onClick={() => handlePageChange('devenir-chauffeur')}
                 >
-                  DEVENIR CHAUFFEUR
+                  {t('nav.chauffeur')}
                 </button>
               </li>
             </ul>
@@ -167,6 +171,14 @@ function App() {
 
       <Footer />
     </div>
+  )
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   )
 }
 

@@ -1,129 +1,171 @@
-import { useState } from 'react'
-import './Devis.css'
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
+import './Devis.css';
 
-function Devis() {
+const Devis = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     depart: '',
     arrivee: '',
     date: '',
     heure: '',
     nom: '',
+    prenom: '',
     passagers: '1',
     telephone: '',
-    email: ''
-  })
+    email: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     // Logique de soumission du formulaire
-  }
+  };
 
   return (
     <div className="devis-container">
       <div className="devis-content">
         <div className="devis-form-section">
-          <h2>Devis</h2>
-          <p className="subtitle">service gratuit</p>
-          
+          <h2>{t('devis.title')}</h2>
+          <p className="subtitle">{t('devis.subtitle')}</p>
+
           <form onSubmit={handleSubmit} className="devis-form">
             <div className="form-row">
               <div className="form-group">
-                <label>Date</label>
-                <input
-                  type="date"
-                  value={formData.date}
-                  onChange={(e) => setFormData({...formData, date: e.target.value})}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label>Heure</label>
-                <input
-                  type="time"
-                  value={formData.heure}
-                  onChange={(e) => setFormData({...formData, heure: e.target.value})}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label>Adresse de départ</label>
-              <input
-                type="text"
-                value={formData.depart}
-                onChange={(e) => setFormData({...formData, depart: e.target.value})}
-                placeholder="Adresse de départ"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Adresse d'arrivée</label>
-              <input
-                type="text"
-                value={formData.arrivee}
-                onChange={(e) => setFormData({...formData, arrivee: e.target.value})}
-                placeholder="Adresse d'arrivée"
-                required
-              />
-            </div>
-
-            <div className="form-row">
-              <div className="form-group">
-                <label>Nom</label>
+                <label>{t('devis.form.nom')}</label>
                 <input
                   type="text"
+                  name="nom"
                   value={formData.nom}
-                  onChange={(e) => setFormData({...formData, nom: e.target.value})}
-                  placeholder="Votre nom"
+                  onChange={handleChange}
+                  placeholder={t('devis.form.placeholder.nom')}
                   required
                 />
               </div>
 
               <div className="form-group">
-                <label>Passager(s)</label>
-                <select
-                  value={formData.passagers}
-                  onChange={(e) => setFormData({...formData, passagers: e.target.value})}
+                <label>{t('devis.form.prenom')}</label>
+                <input
+                  type="text"
+                  name="prenom"
+                  value={formData.prenom}
+                  onChange={handleChange}
+                  placeholder={t('devis.form.placeholder.prenom')}
                   required
-                >
-                  <option value="1">1 passager</option>
-                  <option value="2">2 passagers</option>
-                  <option value="3">3 passagers</option>
-                  <option value="4">4 passagers</option>
-                  <option value="5+">5 passagers ou plus</option>
-                </select>
+                />
               </div>
             </div>
 
             <div className="form-row">
               <div className="form-group">
-                <label>Téléphone</label>
+                <label>{t('devis.form.email')}</label>
                 <input
-                  type="tel"
-                  value={formData.telephone}
-                  onChange={(e) => setFormData({...formData, telephone: e.target.value})}
-                  placeholder="Votre numéro de téléphone"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder={t('devis.form.placeholder.email')}
                   required
                 />
               </div>
 
               <div className="form-group">
-                <label>E-mail</label>
+                <label>{t('devis.form.telephone')}</label>
                 <input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  placeholder="Votre adresse email"
+                  type="tel"
+                  name="telephone"
+                  value={formData.telephone}
+                  onChange={handleChange}
+                  placeholder={t('devis.form.placeholder.telephone')}
                   required
                 />
               </div>
             </div>
 
-            <button type="submit" className="submit-button">
-              Obtenir un devis
+            <div className="form-row">
+              <div className="form-group">
+                <label>{t('devis.form.depart')}</label>
+                <input
+                  type="text"
+                  name="depart"
+                  value={formData.depart}
+                  onChange={handleChange}
+                  placeholder={t('devis.form.placeholder.depart')}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>{t('devis.form.arrivee')}</label>
+                <input
+                  type="text"
+                  name="arrivee"
+                  value={formData.arrivee}
+                  onChange={handleChange}
+                  placeholder={t('devis.form.placeholder.arrivee')}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label>{t('devis.form.date')}</label>
+                <input
+                  type="date"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>{t('devis.form.heure')}</label>
+                <input
+                  type="time"
+                  name="heure"
+                  value={formData.heure}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label>{t('devis.form.passagers')}</label>
+              <input
+                type="number"
+                name="passagers"
+                value={formData.passagers}
+                onChange={handleChange}
+                min="1"
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label>{t('devis.form.message')}</label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder={t('devis.form.placeholder.message')}
+                rows="4"
+              />
+            </div>
+
+            <button type="submit" className="submit-btn">
+              {t('devis.form.submit')}
             </button>
           </form>
         </div>
@@ -132,7 +174,7 @@ function Devis() {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Devis 
+export default Devis; 

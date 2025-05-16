@@ -1,9 +1,11 @@
 import { useLoadScript, GoogleMap, Marker } from '@react-google-maps/api';
-import './OuSommesNous.css'
+import { useLanguage } from '../context/LanguageContext';
+import './OuSommesNous.css';
 
 const libraries = ['places'];
 
 function OuSommesNous() {
+  const { t } = useLanguage();
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg",
     libraries
@@ -30,7 +32,7 @@ function OuSommesNous() {
 
   return (
     <div className="ou-sommes-nous-container">
-      <h2>Où Sommes-Nous</h2>
+      <h2>{t('contact.title')}</h2>
       <div className="map-container">
         <div className="map">
           <GoogleMap
