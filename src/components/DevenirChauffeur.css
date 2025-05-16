@@ -1,0 +1,130 @@
+.devenir-chauffeur-container {
+  min-height: 100vh;
+  padding: 2rem;
+  background: transparent;
+}
+
+.devenir-chauffeur-container h2 {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.devenir-chauffeur-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.devenir-chauffeur-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.devenir-chauffeur-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.devenir-chauffeur-info {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.join-team-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.join-team-image {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.join-team-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.join-team-image img:hover {
+  transform: scale(1.02);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #E5E9F0;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: #2C3E50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #34495E;
+}
+
+@media (max-width: 768px) {
+  .devenir-chauffeur-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .devenir-chauffeur-form,
+  .devenir-chauffeur-info {
+    padding: 1.5rem;
+  }
+}
+
+/* Responsive Design pour iPhone */
+@media screen and (max-width: 375px) {
+  .devenir-chauffeur-container {
+    padding: 1rem;
+  }
+
+  .devenir-chauffeur-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .devenir-chauffeur-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .devenir-chauffeur-form,
+  .devenir-chauffeur-info {
+    padding: 1rem;
+  }
+} 

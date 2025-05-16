@@ -1,0 +1,183 @@
+.devis-container {
+  min-height: 100vh;
+  padding: 1.6rem;
+  background-color: var(--white-color);
+}
+
+.devis-content {
+  display: flex;
+  gap: 1.6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.devis-form-section {
+  flex: 0.64;
+  max-width: 320px;
+  margin-top: 0;
+}
+
+.devis-image-section {
+  flex: 1.36;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+}
+
+.devis-image {
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  object-fit: contain;
+  margin-top: 100px;
+  margin-left: 70px;
+  border-radius: 10px;
+}
+
+.devis-container h2 {
+  color: var(--primary-color);
+  font-size: 1.6rem;
+  margin-bottom: 0.16rem;
+  text-align: left;
+}
+
+.subtitle {
+  color: var(--primary-color);
+  font-size: 0.8rem;
+  margin-bottom: 0.48rem;
+  text-align: left;
+}
+
+.devis-form {
+  width: 100%;
+  background-color: #999999;
+  padding: 0.32rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 0.16rem;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.04rem;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 0.576rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.64rem;
+  margin-bottom: 0.16rem;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="tel"],
+input[type="email"],
+select {
+  width: 100%;
+  padding: 0.16rem;
+  border: 2px solid #ffffff;
+  border-radius: 4px;
+  font-size: 0.64rem;
+  background-color: #ffffff;
+  color: #333333;
+  transition: all 0.3s ease;
+  height: 1.6rem;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+input[type="text"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="email"]::placeholder {
+  color: #b8b8b8;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+.submit-button {
+  background-color: #ffffff;
+  color: #333333;
+  padding: 0.12rem 0.8rem;
+  border: none;
+  border-radius: 3px;
+  font-size: 0.45rem;
+  font-weight: 500;
+  cursor: pointer;
+  width: 80%;
+  margin: 0.16rem auto 0;
+  transition: all 0.3s ease;
+  height: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.submit-button:hover {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  transform: scale(1.02);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .devis-content {
+    flex-direction: column;
+  }
+
+  .devis-form-section,
+  .devis-image-section {
+    width: 100%;
+  }
+
+  .devis-image {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .devis-container {
+    padding: 1rem;
+  }
+
+  .devis-container h2 {
+    font-size: 2rem;
+  }
+
+  .devis-form {
+    padding: 0.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+} 
