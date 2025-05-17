@@ -6,15 +6,15 @@ import './Devis.css';
 const Devis = () => {
   const { t } = useLanguage();
   const [formData, setFormData] = useState({
-    depart: '',
-    arrivee: '',
-    date: '',
-    heure: '',
     nom: '',
     prenom: '',
-    passagers: '1',
-    telephone: '',
     email: '',
+    telephone: '',
+    lieu_depart: '',
+    lieu_arrivee: '',
+    date_trajet: '',
+    heure_trajet: '',
+    nombre_passagers: '1',
     message: ''
   });
 
@@ -26,9 +26,32 @@ const Devis = () => {
     }));
   };
 
+  const resetForm = () => {
+    setFormData({
+      nom: '',
+      prenom: '',
+      email: '',
+      telephone: '',
+      lieu_depart: '',
+      lieu_arrivee: '',
+      date_trajet: '',
+      heure_trajet: '',
+      nombre_passagers: '1',
+      message: ''
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Logique de soumission du formulaire
+    fetch('http://localhost:3000/vtc', {
+      method: 'POST',
+      body: JSON.stringify(formData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    resetForm();
+    alert('Devis envoyé avec succès !');
   };
 
   return (
@@ -93,25 +116,25 @@ const Devis = () => {
 
             <div className="form-row">
               <div className="form-group">
-                <label>{t('devis.form.depart')}</label>
+                <label htmlFor="lieu_depart">Départ</label>
                 <input
                   type="text"
-                  name="depart"
-                  value={formData.depart}
+                  id="lieu_depart"
+                  name="lieu_depart"
+                  value={formData.lieu_depart}
                   onChange={handleChange}
-                  placeholder={t('devis.form.placeholder.depart')}
                   required
                 />
               </div>
 
               <div className="form-group">
-                <label>{t('devis.form.arrivee')}</label>
+                <label htmlFor="lieu_arrivee">Arrivée</label>
                 <input
                   type="text"
-                  name="arrivee"
-                  value={formData.arrivee}
+                  id="lieu_arrivee"
+                  name="lieu_arrivee"
+                  value={formData.lieu_arrivee}
                   onChange={handleChange}
-                  placeholder={t('devis.form.placeholder.arrivee')}
                   required
                 />
               </div>
@@ -122,8 +145,8 @@ const Devis = () => {
                 <label>{t('devis.form.date')}</label>
                 <input
                   type="date"
-                  name="date"
-                  value={formData.date}
+                  name="date_trajet"
+                  value={formData.date_trajet}
                   onChange={handleChange}
                   required
                 />
@@ -133,8 +156,8 @@ const Devis = () => {
                 <label>{t('devis.form.heure')}</label>
                 <input
                   type="time"
-                  name="heure"
-                  value={formData.heure}
+                  name="heure_trajet"
+                  value={formData.heure_trajet}
                   onChange={handleChange}
                   required
                 />
@@ -145,8 +168,8 @@ const Devis = () => {
               <label>{t('devis.form.passagers')}</label>
               <input
                 type="number"
-                name="passagers"
-                value={formData.passagers}
+                name="nombre_passagers"
+                value={formData.nombre_passagers}
                 onChange={handleChange}
                 min="1"
                 required
@@ -164,7 +187,7 @@ const Devis = () => {
               />
             </div>
 
-            <button type="submit" className="submit-btn">
+            <button onClick={handleSubmit} type="submit" className="submit-btn">
               {t('devis.form.submit')}
             </button>
           </form>

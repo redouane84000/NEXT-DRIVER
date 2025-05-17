@@ -176,4 +176,25 @@ select {
     grid-template-columns: 1fr;
     gap: 0;
   }
+}
+
+.success-message {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 } 
