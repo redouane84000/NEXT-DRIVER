@@ -43,7 +43,7 @@ const Devis = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('http://localhost:3000/vtc', {
+    fetch('https://vtc-production.up.railway.app/vtc', {
       method: 'POST',
       body: JSON.stringify(formData),
       headers: {
